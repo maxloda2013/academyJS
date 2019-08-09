@@ -15,6 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/animate.css">
 
     <title>Септик-погреб</title>
 
@@ -129,8 +130,8 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-                    <div class="panel panel-default panel-one wow fadeInLeft">
-                        <div class="panel-heading" role="tab" id="headingOne">
+                    <div class="panel panel-default panel-one wow fadeInLeft calc-section">
+                        <div class="panel-heading header-calc" role="tab" id="headingOne">
                             <h4 class="panel-title">
                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                    aria-expanded="true" aria-controls="collapseOne">
@@ -138,7 +139,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                        <div id="collapseOne" class="panel-collapse collapse in section-calc section-calc-active" role="tabpanel"
                              aria-labelledby="headingOne">
                             <div class="panel-body">
                                 <img class="type-septic" src="img/constructor/type-septic.png" alt="septic">
@@ -158,8 +159,8 @@
                         </div>
                     </div>
 
-                    <div class="panel panel-default panel-two wow fadeInRight" data-wow-delay="0.1s">
-                        <div class="panel-heading" role="tab" id="headingTwo">
+                    <div class="panel panel-default panel-two wow fadeInRight calc-section" data-wow-delay="0.1s">
+                        <div class="panel-heading header-calc" role="tab" id="headingTwo">
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -167,7 +168,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                        <div id="collapseTwo" class="panel-collapse collapse section-calc" role="tabpanel"
                              aria-labelledby="headingTwo">
                             <div class="panel-body">
                                 <div class="panel__block">
@@ -212,8 +213,8 @@
                         </div>
                     </div>
 
-                    <div class="panel panel-default panel-three wow fadeInLeft" data-wow-delay="0.2s">
-                        <div class="panel-heading" role="tab" id="headingThree">
+                    <div class="panel panel-default panel-three wow fadeInLeft calc-section" data-wow-delay="0.2s">
+                        <div class="panel-heading header-calc" role="tab" id="headingThree">
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -221,7 +222,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                        <div id="collapseThree" class="panel-collapse collapse section-calc" role="tabpanel"
                              aria-labelledby="headingThree">
                             <div class="panel-body">
                                 </p>
@@ -241,8 +242,8 @@
                         </div>
                     </div>
 
-                    <div class="panel panel-default panel-four wow fadeInRight" data-wow-delay="0.3s">
-                        <div class="panel-heading" role="tab" id="headingFour">
+                    <div class="panel panel-default panel-four wow fadeInRight calc-section" data-wow-delay="0.3s">
+                        <div class="panel-heading header-calc" role="tab" id="headingFour">
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -250,7 +251,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                        <div id="collapseFour" class="panel-collapse collapse section-calc" role="tabpanel"
                              aria-labelledby="headingFour">
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
@@ -307,7 +308,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-4 discount-item  visible-sm-block">
+                <div class="col-xs-12 col-sm-6 col-md-4 discount-item  hide">
                     <div class="shadow-block wow fadeInDown">
                         <h3>Погреб колодец под ключ</h3>
                         <div class="img-block">
@@ -317,7 +318,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-4 discount-item hidden">
+                <div class="col-xs-12 col-sm-6 col-md-4 discount-item hide">
                     <div class="shadow-block wow fadeInDown" data-wow-delay="0.1s">
                         <h3>Погреб+скважина под ключ</h3>
                         <div class="img-block">
@@ -327,7 +328,8 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-4 discount-item hidden">
+                <div class="col-xs-12 col-sm-6 col-md-4 discount-item hide">
+                    
                     <div class="shadow-block wow fadeInDown" data-wow-delay="0.2s">
                         <h3>Септик накопительный под ключ</h3>
                         <div class="img-block">
@@ -367,16 +369,16 @@
     <div class="container">
         <h2>Часто задаваемые вопросы</h2>
         <div class="panel-group wow slideInDown" id="accordion-two" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
+            <div class="panel panel-default question">
                 <div class="panel-heading" role="tab" id="headingOne-two">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
+                        <a role="button" data-toggle="collapse" data-parent="#accordion-two" href=""
                            aria-expanded="true" aria-controls="collapseOne-two">
                             Существует ли вероятность того, что подводящий трубопровод замерзнет?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne-two" class="panel-collapse collapse in" role="tabpanel"
+                <div id="collapseOne-two" class="panel-collapse collapse answer" role="tabpanel"
                      aria-labelledby="headingOne">
                     <div class="panel-body">
                         Вероятность того, что вода в подводящем трубопроводе замерзнет, отсутствует, потому что она
@@ -387,17 +389,17 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-default question">
                 <div class="panel-heading" role="tab" id="headingTwo-two">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
-                           href="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two">
+                           href="" aria-expanded="false" aria-controls="collapseTwo-two">
                             Помогают ли предлагаемые вами устройства достичь в загородном доме комфорта городского
                             уровня?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseTwo-two" class="panel-collapse collapse" role="tabpanel"
+                <div id="collapseTwo-two" class="panel-collapse collapse answer" role="tabpanel"
                      aria-labelledby="headingTwo-two">
                     <div class="panel-body">
                         Нет, не может. Армированное изделие и марка бетона М-350, позволяют выдерживать значительные
@@ -405,16 +407,16 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-default question">
                 <div class="panel-heading" role="tab" id="headingThree-two">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
-                           href="#collapseThree-two" aria-expanded="false" aria-controls="collapseThree-two">
+                           href="" aria-expanded="false" aria-controls="collapseThree-two">
                             Погибают ли бактерии в холодный период при долгом простое системы?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseThree-two" class="panel-collapse collapse" role="tabpanel"
+                <div id="collapseThree-two" class="panel-collapse collapse answer" role="tabpanel"
                      aria-labelledby="headingThree-two">
                     <div class="panel-body">
                         Да. Иногда зимний монтаж предпочтительней. Большегрузная техника по мороженому грунту не
@@ -481,7 +483,7 @@
 
 
 <!-- Всплывающие окна -->
-<div class="popup-call popup">
+<div class="popup-call popup hide">
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
@@ -502,7 +504,7 @@
     </div>
 </div>
 
-<div class="popup-discount popup">
+<div class="popup-discount popup hide">
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
@@ -523,7 +525,7 @@
     </div>
 </div>
 
-<div class="popup-check popup">
+<div class="popup-check popup hide">
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
@@ -544,7 +546,7 @@
     </div>
 </div>
 
-<div class="popup-consultation popup">
+<div class="popup-consultation popup hide">
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->

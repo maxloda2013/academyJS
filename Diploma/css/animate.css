@@ -1,0 +1,30 @@
+.active-answer{
+    max-height: 200px!important;
+    transition-property: max-height;
+    transition-duration: 0.75s; 
+}
+
+.answer{
+    transition-property: max-height;
+    transition-duration: 0.75s; 
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.section-calc{
+    max-height: 0;
+    display: block;
+    transition-property: max-height, opacity;
+    transition-duration: 0.75s;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.section-calc-active{
+    opacity: 1;
+    max-height: 300px;
+    transition: max-height 0.75s;
+    transition-property: max-height, opacity;
+    transition-duration: 0.75s;
+}
