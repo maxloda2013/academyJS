@@ -11,28 +11,33 @@ const popup = () =>{
         popupDiscount = document.querySelector('.popup-discount'),
         body = document.querySelector('body');
 
-        body.addEventListener('click', (event) =>{
-            let target = event.target;
-
-            const openPopup = (elemClass, hideElem) =>{
-                if(target.closest(`.${elemClass}`)){
-                    hide(hideElem);
+        const togglePopup = (target, event = 'close', prevent = '') =>{
+            if(event == 'open'){
+                if(target.closest('.call-btn')){
+                    hide(popupCall);
                 }
-            };
-
-            const closePopup = () =>{
+                if(target.closest('.check-btn')){
+                    hide(popupCheck);
+                }
+                if(target.closest('.discount-btn')){
+                    hide(popupDiscount);   
+                }
+            }
+            if(event == 'close'){
                 if(target.closest('.popup')){
                     if(!target.closest('.popup-content') || target.closest('.popup-close')){
-                        event.preventDefault();
+                        prevent.preventDefault();
                         hide(target.closest('.popup'));
                     }
                 }
-            };
+            }
+        };
 
-            openPopup('call-btn', popupCall);
-            openPopup('check-btn', popupCheck);
-            openPopup('discount-btn', popupDiscount)
-            closePopup();
+        body.addEventListener('click', (event) =>{
+            let target = event.target;
+            
+            togglePopup(target, 'open'); 
+            togglePopup(target, 'close', event);
         });
 };
 
@@ -93,25 +98,50 @@ toggleAccordion();
 //constructor
 
 const constructor = () =>{
-    const accordionId = document.getElementById('accordion'),
-        btn = accordionId.querySelectorAll('.construct-btn'),
+    const accordionId = document.getElementById('accordion')
         sectionCalc = document.querySelectorAll('.section-calc');
         
+    const searchActiveSection = (target, Class, elem = 'header') =>{
+        if(elem == 'header'){
+            calcSection = target.closest(`.${Class}`).parentNode;
+        }else if(elem == 'button'){
+            calcSection = target.closest(`.${Class}`).parentNode.parentNode.parentNode;
+        }
+        sectionCalcActive = calcSection.querySelector('.section-calc');
+        sectionCalcActive.classList.toggle('section-calc-active');
+        return sectionCalcActive;
+    };
 
+    const toggleCalcSection = (target) =>{
+        if(target.closest('.header-calc')){
+            activeSection = searchActiveSection(target.closest('.header-calc'),'header-calc');
+
+            sectionCalc.forEach((item) =>{
+                if(item !== activeSection){
+                    item.classList.remove('section-calc-active');
+                }
+            });
+        }
+        if(target.closest('.construct-btn')){
+            activeSection = searchActiveSection(target.closest('.construct-btn'),'construct-btn', 'button');
+
+            sectionCalc.forEach((item, id) =>{
+                if(item == activeSection){
+                    if(id == sectionCalc.length - 1){
+                        item.classList.toggle('section-calc-active');
+                    }else{
+                        sectionCalc[id + 1].classList.toggle('section-calc-active');
+                    }
+                    
+                }
+            });
+        }
+    };
         accordionId.addEventListener('click', (event) =>{
             event.preventDefault();
             let target = event.target;
-            if(target.closest('.header-calc')){
-                calcSection = target.closest('.header-calc').parentNode;
-                sectionCalcActive = calcSection.querySelector('.section-calc');
-                sectionCalcActive.classList.toggle('section-calc-active');
-                sectionCalc.forEach((item) =>{
-                    if(item !== sectionCalcActive){
-                        item.classList.remove('section-calc-active');
-                    }
-                });
 
-            }
+            toggleCalcSection(target);
         });
 
 };
