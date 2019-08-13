@@ -138,8 +138,13 @@ const constructor = () =>{
         }
     };
         accordionId.addEventListener('click', (event) =>{
-            event.preventDefault();
             let target = event.target;
+
+            if(target.closest('.onoffswitch')){
+                return;
+            }else{
+                event.preventDefault();
+            }
 
             toggleCalcSection(target);
         });
@@ -155,30 +160,70 @@ const calc = () =>{
         checkboxWell = document.getElementById('myonoffswitch-two'),
         panelBlock = document.querySelectorAll('.panel__block'),
         accordion = document.getElementById('accordion'),
-        selectDiametr = document.getElementById('diameter'),
-        countCircle = document.getElementById('count-circle'),
-        calcResult = document.getElementById('calc-result');
+        selectDiametr = document.querySelectorAll('.diameter'),
+        countCircle = document.querySelectorAll('.count-circle'),
+        calcResult = document.getElementById('calc-result'),
+        distance = document.querySelector('.distance');
+
+        calcResult.value =  11000;
+
+        let result = {};
 
     const counter = () =>{
         let total = 0,
-            countСhamber,
-            coefficient = +selectDiametr[selectDiametr.options.selectedIndex].value,
-            circle = +countCircle[countCircle.options.selectedIndex].value;
+            type,
+            diameter,
+            circleCount,
+            countСhamber = 10000,
+            coefficient = 1,
+            circle = 1;
         
             if(checkbox.checked){
                 countСhamber = 10000;
+                coefficient = +selectDiametr[0][selectDiametr[0].options.selectedIndex].value;
+                circle = +countCircle[0][countCircle[0].options.selectedIndex].value;
+                type = 'Однокамерный';
+                diameter = selectDiametr[0][selectDiametr[0].options.selectedIndex].textContent;
+                circleCount = selectDiametr[0][selectDiametr[0].options.selectedIndex].textContent;
             }else{
                 countСhamber = 15000;
+                let coefficientFirst = +selectDiametr[0][selectDiametr[0].options.selectedIndex].value,
+                    coefficientSecond = +selectDiametr[1][selectDiametr[1].options.selectedIndex].value,
+                    circleFirst = +countCircle[0][countCircle[0].options.selectedIndex].value,
+                    circleSecond = +countCircle[1][countCircle[1].options.selectedIndex].value;
+                coefficient =  coefficientFirst * coefficientSecond;
+                circle = circleFirst * circleSecond;
+                type = 'Двухкамерный';
+                diameter = {
+                    First: selectDiametr[0][selectDiametr[0].options.selectedIndex].textContent,
+                    second: selectDiametr[1][selectDiametr[1].options.selectedIndex].textContent
+                };
+                circleCount = {
+                    First: countCircle[0][countCircle[0].options.selectedIndex].textContent,
+                    second: countCircle[1][countCircle[1].options.selectedIndex].textContent
+                };
             }
 
             
-            total = countСhamber * coefficient * circle;
+            total = Math.ceil(countСhamber * coefficient * circle);
 
             if(checkboxWell.checked){
-                total += 1000;
+                if(checkbox.checked){
+                    total += 1000;
+                }else{
+                    total += 2000;
+                }
             }
 
             calcResult.value =  total;
+            return {
+                septicType: type,
+                diameter: diameter,
+                circleCount: circleCount,
+                bottom:checkboxWell.checked,
+                total: total,
+                distance:distance.value
+            };
     };
 
     accordion.addEventListener('change', (event) =>{
@@ -191,6 +236,13 @@ const calc = () =>{
                 }
             }
         counter();
+    });
+
+    accordion.addEventListener('click', (event) =>{
+        let target = event.target;
+        if(target.closest('.construct-btn')){
+            result = console.log(counter());
+        }
     });
 
 
